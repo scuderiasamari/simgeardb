@@ -1,0 +1,111 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #15181d;
+  --muted: #5d6573;
+  --border: #dde1e7;
+  --accent: #c8102e;
+  --accent-soft: #fde8eb;
+  --row-alt: #fafbfc;
+  --gold: #b8860b;
+  --silver: #7a8089;
+  --bronze: #a0522d;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --surface: #171a20;
+    --text: #e8eaee;
+    --muted: #9aa2af;
+    --border: #2a2f38;
+    --accent: #ff4d63;
+    --accent-soft: #3a1820;
+    --row-alt: #1b1f26;
+    --gold: #e0b341;
+    --silver: #b9c0ca;
+    --bronze: #d08a5c;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main, .top { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.top { padding-top: 24px; padding-bottom: 8px; }
+.brand { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+h1 { font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
+.muted { color: var(--muted); margin: 4px 0 0; font-size: 0.875rem; }
+.badge {
+  font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+}
+
+.controls {
+  display: grid; gap: 12px; margin: 16px 0;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.controls .grow { grid-column: span 2; }
+@media (max-width: 520px) {
+  .controls { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .controls .grow { grid-column: 1 / -1; }
+  select, input { padding: 6px 8px; }
+}
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: var(--muted); }
+select, input {
+  font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; min-width: 0; width: 100%;
+}
+select:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.me-card {
+  display: grid; gap: 8px 24px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+  border-radius: 10px; padding: 14px 16px; margin-bottom: 16px;
+}
+.me-card .label { font-size: 0.75rem; color: var(--muted); }
+.me-card .value { font-size: 1.25rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.me-card .who { grid-column: 1 / -1; font-weight: 600; }
+
+.message { color: var(--muted); min-height: 1.2em; margin: 0 0 8px; }
+.message.error { color: var(--accent); }
+
+.table-wrap {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; text-align: left; white-space: nowrap; }
+th {
+  position: sticky; top: 0; background: var(--surface); font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--muted); border-bottom: 1px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+th[aria-sort="ascending"]::after { content: " ▲"; }
+th[aria-sort="descending"]::after { content: " ▼"; }
+td { border-bottom: 1px solid var(--border); }
+tbody tr:nth-child(even) { background: var(--row-alt); }
+tbody tr.me { background: var(--accent-soft); font-weight: 600; }
+.num { text-align: right; }
+td.name { max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
+.sub { color: var(--muted); font-size: 0.75rem; font-weight: 400; }
+.p1 { color: var(--gold); font-weight: 700; }
+.p2 { color: var(--silver); font-weight: 700; }
+.p3 { color: var(--bronze); font-weight: 700; }
+
+.more {
+  display: block; margin: 16px auto 32px; font: inherit; padding: 8px 18px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer;
+}
+
+@media (max-width: 900px) { .hide-md { display: none; } }
+@media (max-width: 560px) {
+  .hide-sm { display: none; }
+  th, td { padding: 8px 6px; }
+  .me-card { grid-template-columns: repeat(3, 1fr); padding: 12px; }
+  .me-card .value { font-size: 1.05rem; }
+}

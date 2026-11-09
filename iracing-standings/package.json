@@ -1,0 +1,13 @@
+{
+  "name": "iracing-standings",
+  "version": "0.1.0",
+  "description": "Web dashboard for iRacing official series championship points standings",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "IRACING_MOCK=1 node --watch src/server.js",
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iRacing Standings</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>iRacing Standings</h1>
+      <span id="mode" class="badge" hidden></span>
+    </div>
+    <p id="updated" class="muted"></p>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Filters">
+      <label class="field grow">
+        <span>Series</span>
+        <select id="season"></select>
+      </label>
+      <label class="field">
+        <span>Car class</span>
+        <select id="carClass"></select>
+      </label>
+      <label class="field">
+        <span>Division</span>
+        <select id="division"><option value="">All</option></select>
+      </label>
+      <label class="field">
+        <span>Club</span>
+        <select id="club"><option value="">All</option></select>
+      </label>
+      <label class="field grow">
+        <span>Find driver</span>
+        <input id="search" type="search" placeholder="Name or customer ID" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>My customer ID</span>
+        <input id="me" type="text" inputmode="numeric" placeholder="e.g. 123456" autocomplete="off">
+      </label>
+    </section>
+
+    <section id="meCard" class="me-card" hidden aria-live="polite"></section>
+
+    <p id="message" class="message" role="status"></p>
+
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th data-key="rank" class="num">Pos</th>
+            <th data-key="name">Driver</th>
+            <th data-key="division" class="num hide-sm">Div</th>
+            <th data-key="clubName" class="hide-md">Club</th>
+            <th data-key="points" class="num">Points</th>
+            <th data-key="gapToLeader" class="num hide-sm">Gap</th>
+            <th data-key="weeksCounted" class="num hide-md">Wks</th>
+            <th data-key="starts" class="num hide-sm">Starts</th>
+            <th data-key="wins" class="num">Wins</th>
+            <th data-key="top5" class="num hide-md">Top 5</th>
+            <th data-key="poles" class="num hide-md">Poles</th>
+            <th data-key="avgFinish" class="num hide-md">Avg fin</th>
+            <th data-key="incidents" class="num hide-md">Inc</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button id="more" class="more" hidden>Show more</button>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
